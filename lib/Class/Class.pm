@@ -186,7 +186,7 @@ sub DESTROY ($) {
     # Explicity run super DESTROYS so we can handle multiple
     # inheritance:
     bless $self, $class;
-    $self->DESTROY;
+    $self->DESTROY if($self->can('DESTROY'));
   }
 
   # Make us ourselves again so that we don't try to run more super's
